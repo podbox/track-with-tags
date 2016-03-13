@@ -5,7 +5,8 @@
  */
 (function(angular, undefined) {
     'use strict';
-	if (!angular) {
+
+    if (!angular) {
 		console.error('AngularJS is not loaded. Include it in the html page or use the AngularJS-ready package of track-with-tags.');
 	}
 	else {
@@ -20,31 +21,33 @@
 				};
 
 				/** returns the Google Analytics tracker or initializes it */
-				function getGaq() {
-					// initializes the _gaq global variable if it does not exist
-					$window._gaq = $window._gaq || [];
+				function getGa() {
+					// initializes the ga global variable if it does not exist
+                    $window.ga = $window.ga || function() {
+                        ($window.ga.q = $window.ga.q || []).push(arguments);
+                    };
 
-					return $window._gaq;
+					return $window.ga;
 				}
 
 				/** tracks a page view (see https://developers.google.com/analytics/devguides/collection/gajs/asyncMigrationExamples#virtual-pageviews) */
 				function page(pageName) {
-					getGaq().push(['_trackPageview', pageName]);
+					getGa().push(['_trackPageview', pageName]);
 				}
 
 				/** tracks an event */
 				function event(category, action, label, value, nonInteraction) {
-					getGaq().push(['_trackEvent', category, action, label, value, nonInteraction]);
+					getGa().push(['_trackEvent', category, action, label, value, nonInteraction]);
 				}
 
 				/** tracks a custom variable */
 				function userVariable(index, name, value) {
-					getGaq().push(['_setCustomVar', index, name, value, 1]);
+					getGa().push(['_setCustomVar', index, name, value, 1]);
 				}
 
 				/** tracks a page variable */
 				function pageVariable(index, name, value) {
-					getGaq().push(['_setCustomVar', index, name, value, 3]);
+					getGa().push(['_setCustomVar', index, name, value, 3]);
 				}
 
 				return trackService;
