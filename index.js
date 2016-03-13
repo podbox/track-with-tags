@@ -23,9 +23,9 @@
 				/** returns the Google Analytics tracker or initializes it */
 				function getGa() {
 					// initializes the ga global variable if it does not exist
-                    $window.ga = $window.ga || function() {
-                        ($window.ga.q = $window.ga.q || []).push(arguments);
-                    };
+					$window.ga = $window.ga || function() {
+						($window.ga.q = $window.ga.q || []).push(arguments);
+					};
 
 					return $window.ga;
 				}
