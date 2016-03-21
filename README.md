@@ -61,9 +61,9 @@ You must have [Google analytics](https://developers.google.com/analytics/devguid
 ```html
 <body>
     ...
-    <!-- the inclusion of AngularJS must be included beforehand -->
+    <!-- your inclusion of AngularJS -->
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
-    <!-- then include your copy of Track-with-tags -->
+    <!-- include your copy of Track-with-tags AFTER AngularJS inclusion -->
     <script src="/track-with-tags_raw-min.js"></script>
 </body>
 ```
